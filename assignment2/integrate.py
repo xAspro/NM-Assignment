@@ -1,6 +1,8 @@
+##finds simpsons integration for one section
 def simpruledA(f,x_val,y_val,a,b):
     return (b-a)*(f(a,x_val,y_val)+4*f((a+b)/2,x_val,y_val)+f(b,x_val,y_val))/6
 
+##finds simpsons integration 
 def simprule(f,x_val,y_val,n,a,b):
     h=(b-a)/n
     sum=0
@@ -11,9 +13,11 @@ def simprule(f,x_val,y_val,n,a,b):
         
     return sum
     
+##finds simpsons integration for one section
 def simpruledA2(f,a,b):
     return (b-a)*(f(a)+4*f((a+b)/2)+f(b))/6
 
+##finds simpsons integration 
 def simprule2(f,n,a,b):
     h=(b-a)/n
     sum=0
@@ -24,7 +28,7 @@ def simprule2(f,n,a,b):
         
     return sum
     
-    
+##finds trapezoidal integration
 def traprule(f,n,a,b):
     h=(b-a)/n
     sum=(f(a)+f(b))/2

@@ -18,9 +18,12 @@ from sympy import *
     # print(diff(exp,x))
     # print(exp2)
     
-    # return
-    
+    # return 
 # check()
+
+
+##Different method finds, root for different argumented functions and all of them performs Newton Raphson
+
 
 def rootFind(f,dfdx,x,x_val,y_val,eps):
     l=0
@@ -30,14 +33,8 @@ def rootFind(f,dfdx,x,x_val,y_val,eps):
         if(abs(l)<abs(eps)):
             break
             
-    # print(x)
-    # print(l)
-    
-
-    
     return x
     
-# rootFind(1.01,[-3,-2,-1,1,3],[-9,-4,-1,1,9],0.000001)
     
 def rootFind2(f,dfdx,x,x_val,y_val,eps,n):
     l=0
@@ -47,70 +44,31 @@ def rootFind2(f,dfdx,x,x_val,y_val,eps,n):
         if(abs(l)<abs(eps)):
             break
             
-    # print(x)
-    # print(l)
-    
     return x
     
 def rootFind3(f,iJ,x,eps):
     
-    # cnt=0
     while(True):
-        # iJ2=M.copyMat(iJ)
-        # f2=M.copyVec(f)
         iJ2=copy.deepcopy(iJ)
         f2=copy.deepcopy(f)
 
-        # print("iJ= ",iJ)
-        # print("f= ",f)
-        
-        # print("iJ2= ",iJ2)
-        # print("Before subs f2= ",f2)
-        
-        # iJ2=iJ2.subs(c,x[0])
-        # iJ2=iJ2.subs(b,x[1])
-        # iJ2=iJ2.subs(a,x[2])
-        # iJ2=iJ2.subs(w,x[3])
-        
-        # f2=f2.subs(c,x[0])
-        # f2=f2.subs(b,x[1])
-        # f2=f2.subs(a,x[2])
-        # f2=f2.subs(w,x[3])
-        
         
         for i in range(len(iJ2)):
             for j in range(len(iJ2)):
                 iJ2[i][j]=iJ2[i][j].subs([('c',x[0]),('b',x[1]),('a',x[2]),('w',x[3])])
             f2[i]=f2[i].subs([('c',x[0]),('b',x[1]),('a',x[2]),('w',x[3])])
-            
-        # print()
-        # print()
-        # print()
-        # print("iJ2=       ",iJ2)
-        # print("After !!!    f2=       ",f2)
-        # print("After !!!    f=       ",f)
+        
         l=M.prodMV(iJ2,f2)
-        # print("\n\n\tl=",l)
-        # print()
-        # print()
         
-        # print("x_initial=",x)
         x=M.subV(x,l)
-        # print("x_final=",x)
-        
-        # if(cnt==3): 
-            # break
-        # cnt+=1
         
         n=M.norm(l)
-        # print(n)
         if (n<abs(eps)):
             break
            
-    # print("\nx=   ",x)
     return x
     
-    
+##This is for finding w value in exp(wx)
 def rootOmega(func,f,w0,w1,eps,n):
     while(True):
         tempw1=w1
@@ -124,6 +82,8 @@ def rootOmega(func,f,w0,w1,eps,n):
     return w1
     
 '''
+
+# This method alone performs a modified Newton Raphson method, which is Secant method
 def sec(func,A2,eps,cnt):
 
     # print("Before func=   ",func)

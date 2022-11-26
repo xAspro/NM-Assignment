@@ -9,7 +9,7 @@ def run():
     access="r"
     
     #root bound (ie. the error for root) and integration number of steps can be changed
-    eps=0.0000001
+    eps=pow(10,-12)
     n=100
     
     
@@ -20,18 +20,9 @@ def run():
     for i in range(len(xy)):
         x.append(float(xy[i].split()[0]))
         y.append(float(xy[i].split()[1]))
-        # print(xy[0].split())
     
-    # print(x)
-    # print(y)
     
     dI.run(x,y,eps,n)
     
-    
-    # x=x[::4]
-    # y=y[::4]
-    
-    # dI.run(x,y,eps,n)
-
     
 run()

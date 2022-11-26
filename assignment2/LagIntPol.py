@@ -1,4 +1,4 @@
-
+## Finds Langrange interpolation for particular i value
 def intPolL_i(x,x_val,p,i):
     for j in range(len(x_val)):
         if i!=j:
@@ -6,14 +6,15 @@ def intPolL_i(x,x_val,p,i):
             
     return p
 
+## Finds Langrange interpolation 
 def intPol(x,x_val,y_val):
     sum=0
     for i in range(len(x_val)):
         sum+=intPolL_i(x,x_val,y_val[i],i)
     return sum
 
-# print(intPol(7,[1,2,3,4,5,6],[1,2,3,4,5,6]))
 
+## Finds differentiation of Langrange interpolation for particular i value
 def difIntPolL_i(x,x_val,p,i):
     sum=0
     for j in range(len(x_val)):
@@ -22,14 +23,12 @@ def difIntPolL_i(x,x_val,p,i):
             
     return sum*intPolL_i(x,x_val,p,i)
     
+## Finds differentiation of Langrange interpolation 
 def difIntPol(x,x_val,y_val):
     sum=0
     for i in range(len(x_val)):
         sum+=difIntPolL_i(x,x_val,y_val[i],i)
     return sum
-
-
-# print(difIntPol(7,[1,2,3,4,5,6],[2,4,6,8,10,12]))
 
 
 

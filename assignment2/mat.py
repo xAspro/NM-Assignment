@@ -1,5 +1,5 @@
-'''import PolyLagIntPol as P'''
 
+##Returns a copy of the matrix
 def copyMat(m):
     n=[]
     for i in range(len(m)):
@@ -8,19 +8,13 @@ def copyMat(m):
             n[i].append(m[i][j])
     
     return n
-    
-def copyVec(v):
-    v2=[]
-    for i in range(len(v)):
-        v2.append(v[i])
-        
-    return v
 
+##returns the norm of a vector
 def norm(v):
     n=0
     
     for i in range(len(v)):
-        # print(v)
+        
         n+=pow(v[i],2)
         
     return pow(n,(1/2))
@@ -36,24 +30,21 @@ def transp(vT):
 ##converts column vector to row vector
 def invTransp(v):
     vT=[]
-    # print(v)
     for i in range(len(v)):
         vT.append(v[i][0])
         
-    # print("vT=   ",vT)
     return vT
     
-##addOrSub = 0 for add and -1 for sub
+##subtracts two vectors
 def subV(l1,l2):
 
-    # print("l1 =",l1,"\t\tl2= ",l2)
     l=[]
     for i in range(len(l1)):
             l.append(l1[i]-l2[i])
         
     return l
     
-    
+##Multiplies two matrix
 def prod(l1,l2):
     klim=len(l1[0])
     if (klim==len(l2)):
@@ -61,7 +52,6 @@ def prod(l1,l2):
         l=[]
         for i in range(len(l1)):
             l.append([])
-            # print("l2= ",l2)
             for j in range(len(l2[0])):
                 sum=0
                 for k in range(klim):
@@ -72,6 +62,7 @@ def prod(l1,l2):
     print("Some Error!")
     return 
     
+##Multiplies a matrix and a vector
 def prodMV(m,vT):
     n=len(vT)
     if (n==len(m)):
@@ -81,12 +72,7 @@ def prodMV(m,vT):
         return invTransp(prod(m,v))
         
         
-# m1=[[1,2,3],[4,5,6],[7,8,9]]
-# m2=[[4,5],[7,8],[1,2]]
-
-# print(add(m1,m2))
-# print(prod(m1,m2))
-
+##removes a particular row and column from a matrix
 def rem(m,k,l):
     n=[]
     i2=0
@@ -102,6 +88,7 @@ def rem(m,k,l):
             
     return n
 
+##Returns the determinant of a matrix
 def det(m):
     if len(m)==1:
         return m[0][0]
@@ -112,13 +99,16 @@ def det(m):
     m1=copyMat(m)
     for j in range(len(m1)):
        n=rem(m1,i,j)
-       # print(m,"\t",n)
        d+=m1[i][j]*det(n)*pow(-1,(i+j))
         
     return d
 
+##Finds the inverse of a matrix
 def inv(m):
     d=det(m)
+    if d==0:
+        print("Error!!")
+        return
     inv=[]
     for i in range(len(m)):
         inv.append([])
@@ -126,14 +116,8 @@ def inv(m):
             inv[i].append(pow(-1,(i+j))*det(rem(m,j,i))/d)
             
     return inv
-
-    return
     
-# print(det([[1,2,3,4],[4,5,6,4],[1,2,2,4],[4,4,4,4]]))
-# print(inv([[2,4,6,9],[1,2,5,6],[2,4,5,7],[6,2,8,8]]))
-
-
-
+    
 '''
 def f(func,A2):
     ex=[]

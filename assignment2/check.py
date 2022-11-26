@@ -2,12 +2,12 @@ import matplotlib.pyplot as plt
 import math as m
 import numpy as np
 
-    
+# Returns the functional form given 
 def f(x,A):
     return (m.exp((A[3])*x))*((A[2])*x**2+(A[1])*x+A[0])
     
 
-
+# Plots the graphs
 def plot(A,var2,abc,x_val,y_val):
     
     x_1=np.linspace(-5,5,10000)
